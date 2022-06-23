@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/fragment_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home"/>
+
+    <item
+        android:id="@+id/fragment_today"
+        android:icon="@drawable/ic_today"
+        android:title="@string/today" />
+
+    <item
+        android:id="@+id/fragment_favourites"
+        android:icon="@drawable/ic_favorites"
+        android:title="@string/favourites"/>
+
+    <item
+        android:id="@+id/fragment_label"
+        android:icon="@drawable/ic_label"
+        android:title="@string/_label" />
+
+    <item
+        android:id="@+id/fragment_calender"
+        android:icon="@drawable/ic_calender"
+        android:title="@string/calender" />
+
+    <item
+        android:id="@+id/fragment_notification"
+        android:icon="@drawable/ic_notifications"
+        android:title="@string/notification" />
+
+
+
+
+</menu>
