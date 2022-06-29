@@ -20,8 +20,10 @@
         <entry key="app/src/main/res/layout/fragment_favourites.xml" value="0.25656382242838544" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.24984995524088544" />
         <entry key="app/src/main/res/layout/fragment_labels.xml" value="0.2895456949869792" />
+        <entry key="app/src/main/res/layout/fragment_notification.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.23841959635416668" />
         <entry key="app/src/main/res/layout/fragment_task_details.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_today.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/layout/fragment_welcome.xml" value="0.22066497802734375" />
         <entry key="app/src/main/res/layout/item_labels_recycler.xml" value="0.20431315104166667" />
         <entry key="app/src/main/res/layout/item_recycler.xml" value="0.3541666666666667" />
