@@ -3,7 +3,8 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="enter_title">Enter Title</string>
-    <string name="note">Notes</string>
+    <string name="notes">Notes</string>
+    <string name="note">Note</string>
     <string name="press_to_add_a_note">Press \'+\' to add a note</string>
     <string name="welcome_to_domore">Welcome to DoMore</string>
     <string name="welcome_info">Manage all your tasks in one place.\n Set, follow and Meet your targets.</string>
@@ -44,4 +45,18 @@
     <string name="_label">Label</string>
     <string name="calender">Calender</string>
     <string name="notification">Notification</string>
+    <string name="enter_email">Enter email</string>
+    <string name="today_s_task">Today\'s Task</string>
+
+
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <string name="task_title">Task Title</string>
+    <string name="task_title_hint">Give your task a title</string>
+    <string name="what_do_you_want_to_do">What do you want to do</string>
+    <string name="set_a_due_date">Set a due date</string>
+    <string name="set_a_time_for_reminder">Set a time for reminder</string>
+    <string name="additional_info">Additional info</string>
+    <string name="priority">Priority</string>
+    <string name="done">Done</string>
 </resources>

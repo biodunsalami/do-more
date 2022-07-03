@@ -10,7 +10,7 @@ import com.example.domore.MainActivity
 import com.example.domore.R
 
 
-class SharedFragment : Fragment() {
+open class SharedFragment : Fragment() {
 
     fun activityCast() : MainActivity {
         return activity as MainActivity

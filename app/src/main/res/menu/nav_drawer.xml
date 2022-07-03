@@ -2,36 +2,34 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/fragment_home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
         android:title="@string/home"/>
 
     <item
-        android:id="@+id/fragment_today"
+        android:id="@+id/todayFragment"
         android:icon="@drawable/ic_today"
         android:title="@string/today" />
 
     <item
-        android:id="@+id/fragment_favourites"
+        android:id="@+id/favouritesFragment"
         android:icon="@drawable/ic_favorites"
         android:title="@string/favourites"/>
 
     <item
-        android:id="@+id/fragment_label"
+        android:id="@+id/labelsFragment"
         android:icon="@drawable/ic_label"
         android:title="@string/_label" />
 
     <item
-        android:id="@+id/fragment_calender"
+        android:id="@+id/calenderFragment"
         android:icon="@drawable/ic_calender"
         android:title="@string/calender" />
 
     <item
-        android:id="@+id/fragment_notification"
+        android:id="@+id/notificationFragment"
         android:icon="@drawable/ic_notifications"
         android:title="@string/notification" />
-
-
 
 
 </menu>
