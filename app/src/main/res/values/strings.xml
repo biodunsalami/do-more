@@ -59,4 +59,23 @@
     <string name="additional_info">Additional info</string>
     <string name="priority">Priority</string>
     <string name="done">Done</string>
+
+    <string-array name="labels">
+        <item>General</item>
+        <item>Personal</item>
+        <item>Work</item>
+        <item>School</item>
+        <item>Home</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="priority">
+        <item>5</item>
+        <item>4</item>
+        <item>3</item>
+        <item>2</item>
+        <item>1</item>
+    </string-array>
+
+
 </resources>

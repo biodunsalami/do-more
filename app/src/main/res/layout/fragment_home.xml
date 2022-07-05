@@ -181,7 +181,7 @@
     
     
     <FrameLayout
-        android:visibility="invisible"
+        android:visibility="visible"
         android:id="@+id/bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -289,7 +289,7 @@
                         android:id="@+id/due_date_text_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/set_a_due_date"
+                        android:hint="@string/due_date"
                         app:boxStrokeWidth="0dp"
                         app:boxStrokeWidthFocused="0dp"
                         app:layout_constraintTop_toBottomOf="@+id/by_card_used_input"
@@ -403,6 +403,8 @@
                             android:fontFamily="@font/notosans_semibold"
                             android:textSize="14sp"
                             android:textColor="@color/black"
+                            app:drawableEndCompat="@drawable/ic_star_little"
+                            android:drawablePadding="8dp"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="parent"/>
 
@@ -454,6 +456,8 @@
                             android:text="@string/_label"
                             android:fontFamily="@font/notosans_semibold"
                             android:textSize="14sp"
+                            app:drawableEndCompat="@drawable/ic_label_little"
+                            android:drawablePadding="8dp"
                             android:textColor="@color/black"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="@+id/label_text_input"/>
