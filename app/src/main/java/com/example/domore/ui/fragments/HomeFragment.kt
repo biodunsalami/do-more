@@ -1,6 +1,7 @@
 package com.example.domore.ui.fragments
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,29 +17,18 @@ import java.time.LocalDate
 import java.util.*
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : SharedFragment() {
 
     private lateinit var binding: FragmentHomeBinding
 
-//    val date = LocalDate.now()
-    var calender = Calendar.getInstance()
-
-    private var dueDate = ""
+    private var currentProgress = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
-
-
-        BottomSheetBehavior.from(binding.bottomSheet).apply {
-            peekHeight = 350
-            this.state = BottomSheetBehavior.STATE_COLLAPSED
-        }
-
-
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         return binding.root
 
@@ -47,29 +37,17 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setUpDropDownEntryFields()
+//
+//        currentProgress += 10
+//        binding.progressBar.max = 100 //change this to size of adapter or sm
+//        binding.progressBar.progress = currentProgress
 
         binding.addNewTask.setOnClickListener {
-            binding.bottomSheet.visibility = View.VISIBLE
+            activityCast().binding.bottomSheet.visibility = View.VISIBLE
         }
 
 
-    }
 
-
-
-
-    private fun setUpDropDownEntryFields(){
-        val labels = resources.getStringArray(R.array.labels)
-        val labelArrayAdapter = ArrayAdapter(requireContext(), R.layout.item_drop_down, labels)
-        binding.labelAutocompleteTextview.setAdapter(labelArrayAdapter)
-
-        val priorities = resources.getStringArray(R.array.priority)
-        val nationalityArrayAdapter = ArrayAdapter(requireContext(), R.layout.item_drop_down, priorities)
-        binding.priorityAutocompleteTextview.setAdapter(nationalityArrayAdapter)
-
-
-        //Override OnResume and call this function in there to make the drop down items persist
     }
 
 

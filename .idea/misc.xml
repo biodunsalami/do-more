@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/circular_bg.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/curved_edit_text_bg.xml" value="0.231" />
         <entry key="app/src/main/res/drawable/curved_rectangle_bg.xml" value="0.1715" />
+        <entry key="app/src/main/res/drawable/custom_progress_bg.xml" value="0.1315" />
         <entry key="app/src/main/res/drawable/drawer_bg.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/hint.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.1715" />
@@ -22,13 +23,13 @@
         <entry key="app/src/main/res/drawable/item_drop_down.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/rectangular_bg.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/square_bg.xml" value="0.1645" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22138671875000002" />
         <entry key="app/src/main/res/layout/dialog_first_task_congrats.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_calender.xml" value="0.3541666666666667" />
         <entry key="app/src/main/res/layout/fragment_favourites.xml" value="0.20377604166666669" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2613006591796875" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.23545227050781248" />
         <entry key="app/src/main/res/layout/fragment_label_details.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_labels.xml" value="0.2895456949869792" />
+        <entry key="app/src/main/res/layout/fragment_labels.xml" value="0.22507232666015625" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/layout/fragment_notification.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.23841959635416668" />

@@ -22,6 +22,7 @@
     <string name="already_have_an_account">Already have an account?</string>
     <string name="hello">Hello</string>
     <string name="today">Today</string>
+    <string name="_today">today</string>
     <string name="add_favourites">Add Favourites</string>
     <string name="favourite_task">Favourite Task</string>
     <string name="you_have_no_favourite_task">You have no favourite task</string>
@@ -59,6 +60,14 @@
     <string name="additional_info">Additional info</string>
     <string name="priority">Priority</string>
     <string name="done">Done</string>
+    <string name="reminder_time_text">%1$d:%2$d %3$s</string>
+    <string name="add_task">Add task</string>
+    <string name="task_number_info">You have %1$d Task to do</string>
+    <string name="current_date">%1$d, %2$s, %3$d</string>
+    <string name="personal">Personal</string>
+    <string name="work">Work</string>
+    <string name="school">School</string>
+    <string name="others">Others</string>
 
     <string-array name="labels">
         <item>General</item>

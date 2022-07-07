@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.domore.R
 
 
-class CalenderFragment : Fragment() {
+class CalenderFragment : SharedFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

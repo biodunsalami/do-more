@@ -48,7 +48,11 @@
         android:id="@+id/labelsFragment"
         android:name="com.example.domore.ui.fragments.LabelsFragment"
         android:label="fragment_labels"
-        tools:layout="@layout/fragment_labels" />
+        tools:layout="@layout/fragment_labels" >
+        <action
+            android:id="@+id/action_labelsFragment_to_labelDetailsFragment"
+            app:destination="@id/labelDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/notificationFragment"
         android:name="com.example.domore.ui.fragments.NotificationFragment"
@@ -59,4 +63,9 @@
         android:name="com.example.domore.ui.fragments.CalenderFragment"
         android:label="fragment_calender"
         tools:layout="@layout/fragment_calender" />
+    <fragment
+        android:id="@+id/labelDetailsFragment"
+        android:name="com.example.domore.ui.fragments.LabelDetailsFragment"
+        android:label="fragment_label_details"
+        tools:layout="@layout/fragment_label_details" />
 </navigation>
