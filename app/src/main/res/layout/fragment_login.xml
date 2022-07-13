@@ -21,25 +21,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/email_text"
+    <FrameLayout
+        android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="26dp"
-        android:background="@drawable/curved_rectangle_bg"
-        android:backgroundTint="@color/off_white"
-        android:ems="10"
-        android:hint="@string/enter_email"
-        android:fontFamily="@font/notosans_regular"
-        android:inputType="textEmailAddress"
-        android:maxLines="1"
-        android:paddingHorizontal="12dp"
-        android:paddingVertical="16dp"
-        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_text_view" />
+        app:layout_constraintTop_toBottomOf="@+id/welcome_text_view">
+
+        <EditText
+            android:id="@+id/email_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/curved_rectangle_bg"
+            android:backgroundTint="@color/off_white"
+            android:ems="10"
+            android:hint="@string/enter_email"
+            android:fontFamily="@font/notosans_regular"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="16dp"
+            android:textSize="16sp"/>
+
+        <ImageView
+            android:id="@+id/login_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_foward_arrow"
+            android:layout_gravity="end|center_vertical"/>
+    </FrameLayout>
+
+
 
 
     <TextView
@@ -54,7 +69,7 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_text" />
+        app:layout_constraintTop_toBottomOf="@+id/frame" />
 
     <Button
         android:id="@+id/continue_with_google_button"

@@ -15,7 +15,7 @@
         android:fontFamily="@font/notosans_bold"
         android:textColor="@color/black"
         android:textSize="28sp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="42dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

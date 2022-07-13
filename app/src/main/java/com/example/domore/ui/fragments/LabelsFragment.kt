@@ -16,7 +16,7 @@ class LabelsFragment : SharedFragment() {
 
     private lateinit var binding: FragmentLabelsBinding
 
-    private var currentLabel = MainActivity.Label.GENERAL
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,56 +32,59 @@ class LabelsFragment : SharedFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         binding.generalTextView.setOnClickListener {
             activityCast().changeActivityFragment(
                 LabelsFragmentDirections.actionLabelsFragmentToLabelDetailsFragment())
 
-            currentLabel = MainActivity.Label.GENERAL
-            Log.e("currentLabel", "$currentLabel")
+            activityCast().currentLabel = MainActivity.Label.GENERAL
+            Log.e("currentLabel", "${activityCast().currentLabel}")
         }
 
         binding.personalTextView.setOnClickListener {
             activityCast().changeActivityFragment(
                 LabelsFragmentDirections.actionLabelsFragmentToLabelDetailsFragment())
 
-            currentLabel = MainActivity.Label.PERSONAL
-            Log.e("currentLabel", "$currentLabel")
+            activityCast().currentLabel = MainActivity.Label.PERSONAL
+            Log.e("currentLabel", "${activityCast().currentLabel}")
 
         }
         binding.workTextView.setOnClickListener {
             activityCast().changeActivityFragment(
                 LabelsFragmentDirections.actionLabelsFragmentToLabelDetailsFragment())
 
-            currentLabel = MainActivity.Label.WORK
-            Log.e("currentLabel", "$currentLabel")
+            activityCast().currentLabel = MainActivity.Label.WORK
+            Log.e("currentLabel", "${activityCast().currentLabel}")
         }
 
         binding.schoolTextView.setOnClickListener {
             activityCast().changeActivityFragment(
                 LabelsFragmentDirections.actionLabelsFragmentToLabelDetailsFragment())
 
-            currentLabel = MainActivity.Label.SCHOOL
-            Log.e("currentLabel", "$currentLabel")
+            activityCast().currentLabel = MainActivity.Label.SCHOOL
+            Log.e("currentLabel", "${activityCast().currentLabel}")
         }
 
         binding.homeTextView.setOnClickListener {
             activityCast().changeActivityFragment(
                 LabelsFragmentDirections.actionLabelsFragmentToLabelDetailsFragment())
 
-            currentLabel = MainActivity.Label.HOME
-            Log.e("currentLabel", "$currentLabel")
+            activityCast().currentLabel = MainActivity.Label.HOME
+            Log.e("currentLabel", "${activityCast().currentLabel}")
         }
 
         binding.otherTextView.setOnClickListener {
             activityCast().changeActivityFragment(
                 LabelsFragmentDirections.actionLabelsFragmentToLabelDetailsFragment())
 
-            currentLabel = MainActivity.Label.OTHERS
-            Log.e("currentLabel", "$currentLabel")
+            activityCast().currentLabel = MainActivity.Label.OTHERS
+            Log.e("currentLabel", "${activityCast().currentLabel}")
 
         }
 
-        when(currentLabel){
+        //Add color to the bg of textview of selected Label
+        when(activityCast().currentLabel){
             MainActivity.Label.GENERAL -> binding.generalTextView.setBackgroundColor(resources.getColor(R.color.light_blue))
             MainActivity.Label.PERSONAL -> binding.personalTextView.setBackgroundColor(resources.getColor(R.color.light_blue))
             MainActivity.Label.WORK -> binding.workTextView.setBackgroundColor(resources.getColor(R.color.light_blue))

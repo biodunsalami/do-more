@@ -33,10 +33,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var actionBarToggle: ActionBarDrawerToggle
 
-
+    var currentLabel = Label.GENERAL
 
     var calender = Calendar.getInstance()
     private var dueDate = ""
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -155,10 +156,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun setSheetToPeek(){
         BottomSheetBehavior.from(binding.bottomSheet).apply {
-            peekHeight = 350
+            peekHeight = 500
             this.state = BottomSheetBehavior.STATE_COLLAPSED
         }
+    }
 
+    fun hideSheet(){
+        BottomSheetBehavior.from(binding.bottomSheet).apply {
+            isHideable = true
+            this.state = BottomSheetBehavior.STATE_HIDDEN
+        }
     }
 
 
@@ -186,7 +193,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    enum class Label{
-        GENERAL, PERSONAL, WORK, SCHOOL, HOME, OTHERS
+    enum class Label(val labelName: String){
+        GENERAL("General"),
+        PERSONAL("Personal"),
+        WORK("Work"),
+        SCHOOL("School"),
+        HOME("Home"),
+        OTHERS("Others")
     }
+
 }

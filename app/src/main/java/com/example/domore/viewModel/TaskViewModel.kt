@@ -26,7 +26,7 @@ class TaskViewModel(private val taskDao: TaskDao): ViewModel() {
         }
     }
 
-    fun updateTask(task: Task){
+    private fun updateTask(task: Task){
         viewModelScope.launch {
             taskDao.update(task)
         }
@@ -45,18 +45,18 @@ class TaskViewModel(private val taskDao: TaskDao): ViewModel() {
 
 
     //Inserts the new Item into database.
-    fun addNewItem(title: String, description: String, dueDate: String,
+    fun addNewTask(title: String, description: String, dueDate: String,
                    remainderTime: String, note: String, priority: Int,
-                   label: String, isDone: Boolean) {
-        val newItem = getNewTaskEntry(title, description, dueDate, remainderTime, note, priority, label, isDone)
-        insertTask(newItem)
+                   label: String) {
+        val newTask = getNewTaskEntry(title, description, dueDate, remainderTime, note, priority, label)
+        insertTask(newTask)
     }
 
 
     fun updateTask(id: Int, title: String, description: String, dueDate: String,
                    remainderTime: String, note: String, priority: Int,
-                   label: String, isDone: Boolean){
-        val updatedTask = getUpdatedTaskEntry(id, title, description, dueDate, remainderTime, note, priority, label, isDone)
+                   label: String){
+        val updatedTask = getUpdatedTaskEntry(id, title, description, dueDate, remainderTime, note, priority, label)
 
         updateTask(updatedTask)
     }
@@ -76,8 +76,7 @@ class TaskViewModel(private val taskDao: TaskDao): ViewModel() {
                                 remainderTime: String,
                                 note: String,
                                 priority: Int,
-                                label: String,
-                                isDone: Boolean): Task {
+                                label: String): Task {
         return Task(
             title = title,
             description = description,
@@ -85,8 +84,7 @@ class TaskViewModel(private val taskDao: TaskDao): ViewModel() {
             remainderTime = remainderTime,
             note = note,
             priority = priority,
-            label = label,
-            isDone = isDone
+            label = label
         )
     }
 
@@ -98,8 +96,7 @@ class TaskViewModel(private val taskDao: TaskDao): ViewModel() {
                                 remainderTime: String,
                                 note: String,
                                 priority: Int,
-                                label: String,
-                                isDone: Boolean): Task {
+                                label: String): Task {
         return Task(
             id = id,
             title = title,
@@ -108,23 +105,22 @@ class TaskViewModel(private val taskDao: TaskDao): ViewModel() {
             remainderTime = remainderTime,
             note = note,
             priority = priority,
-            label = label,
-            isDone = isDone
+            label = label
         )
     }
 
 }
 
 
-//class TaskViewModelFactory(private val taskDao: TaskDao) : ViewModelProvider.Factory {
-//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-//        if (modelClass.isAssignableFrom(TaskViewModel::class.java)) {
-//            @Suppress("UNCHECKED_CAST")
-//            return TaskViewModel(taskDao) as T
-//        }
-//        throw IllegalArgumentException("Unknown ViewModel class")
-//    }
-//}
+class TaskViewModelFactory(private val taskDao: TaskDao) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(TaskViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return TaskViewModel(taskDao) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
+}
 
 
 

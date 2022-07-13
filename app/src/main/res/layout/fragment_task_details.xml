@@ -79,6 +79,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginHorizontal="25dp">
             <TextView
+                android:id="@+id/due_date_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
@@ -108,7 +109,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginHorizontal="25dp">
             <TextView
-                android:id="@+id/task_remainder_text_view"
+                android:id="@+id/task_remainder_time_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
@@ -196,7 +197,7 @@
 
     <TextView
         android:visibility="invisible"
-        android:id="@+id/status__incomplete_text_view"
+        android:id="@+id/status_incomplete_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -228,7 +229,7 @@
         app:layout_constraintStart_toEndOf="@+id/status_label"/>
 
     <TextView
-        android:id="@+id/delete_text_view"
+        android:id="@+id/delete_task_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

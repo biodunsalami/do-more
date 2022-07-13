@@ -7,11 +7,11 @@
     tools:context=".ui.fragments.SignUpFragment">
 
     <TextView
-        android:id="@+id/welcome_text_view"
+        android:id="@+id/sign_up_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/notosans_bold"
         android:text="@string/sign_up"
         android:textColor="@color/black"
@@ -19,25 +19,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/email_text"
+    <FrameLayout
+        android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="26dp"
-        android:background="@drawable/curved_rectangle_bg"
-        android:backgroundTint="@color/off_white"
-        android:ems="10"
-        android:hint="Enter email"
-        android:fontFamily="@font/notosans_regular"
-        android:inputType="textEmailAddress"
-        android:maxLines="1"
-        android:paddingHorizontal="12dp"
-        android:paddingVertical="16dp"
-        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_text_view" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_text_view">
+
+        <EditText
+            android:id="@+id/email_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/curved_rectangle_bg"
+            android:backgroundTint="@color/off_white"
+            android:ems="10"
+            android:hint="@string/enter_email"
+            android:fontFamily="@font/notosans_regular"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="16dp"
+            android:textSize="16sp"/>
+
+        <ImageView
+            android:id="@+id/sign_in_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_foward_arrow"
+            android:layout_gravity="end|center_vertical"/>
+    </FrameLayout>
 
     <TextView
         android:id="@+id/sign_up_info_text_view"
@@ -51,7 +64,7 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_text" />
+        app:layout_constraintTop_toBottomOf="@+id/frame" />
 
     <LinearLayout
         android:id="@+id/linear_layout"
@@ -231,7 +244,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="10dp"
         android:fontFamily="@font/notosans_regular"
         android:text="----------------------------------------------------------------------------------"
         android:textColor="@color/black"

@@ -25,6 +25,10 @@ class TodayFragment : SharedFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.taskLabel.text = getString(R.string.task_type_header, "Today's")
+
+        binding.date.text = getString(R.string.current_date, day, monthName, year)
+
         binding.fab.setOnClickListener {
             activityCast().binding.bottomSheet.visibility = View.VISIBLE
         }

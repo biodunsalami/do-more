@@ -50,13 +50,13 @@
         app:layout_constraintBottom_toBottomOf="@+id/linear_layout1"/>
 
     <TextView
-        android:id="@+id/favourite_task_label"
+        android:id="@+id/task_type_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
         android:layout_marginTop="62dp"
         android:fontFamily="@font/notosans_medium"
-        android:text="@string/favourite_task"
+        android:text="@string/task_type_header"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/favourite_task_label"/>
+        app:layout_constraintTop_toBottomOf="@+id/task_type_label"/>
 
 
     <ImageView
@@ -113,7 +113,7 @@
         android:id="@+id/add_favourites_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_favourites"
+        android:text="@string/add_task"
         android:fontFamily="@font/notosans_medium"
         android:textColor="@color/black"
         android:layout_marginEnd="20dp"

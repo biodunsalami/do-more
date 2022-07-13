@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.GravityCompat
+import androidx.core.view.isVisible
 import com.example.domore.R
 import com.example.domore.databinding.FragmentLabelDetailsBinding
 
@@ -20,6 +22,9 @@ class LabelDetailsFragment : SharedFragment() {
         // Inflate the layout for this fragment
         binding = FragmentLabelDetailsBinding.inflate(inflater, container, false)
 
+        activityCast().supportActionBar?.hide()
+
+
         return binding.root
     }
 
@@ -27,6 +32,19 @@ class LabelDetailsFragment : SharedFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.taskTypeLabel.text =
+            getString(R.string.task_type_header, activityCast().currentLabel.labelName)
+
+        binding.fab.setOnClickListener {
+            activityCast().binding.bottomSheet.visibility = View.VISIBLE
+        }
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        activityCast().supportActionBar?.show()
 
     }
 

@@ -26,6 +26,8 @@ class FavouritesFragment : SharedFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.favouriteTaskLabel.text = getString(R.string.task_type_header, "Favourite")
+
         binding.fab.setOnClickListener {
             activityCast().binding.bottomSheet.visibility = View.VISIBLE
         }
