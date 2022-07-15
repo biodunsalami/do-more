@@ -13,5 +13,5 @@ data class Task(
     val remainderTime: String = "",
     val note: String = "",
     val priority: Int,
-    val label: String
+    val label: String,
 )

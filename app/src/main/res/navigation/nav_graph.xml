@@ -52,7 +52,11 @@
         android:id="@+id/todayFragment"
         android:name="com.example.domore.ui.fragments.TodayFragment"
         android:label="fragment_today"
-        tools:layout="@layout/fragment_today" />
+        tools:layout="@layout/fragment_today" >
+        <action
+            android:id="@+id/action_todayFragment_to_taskDetailsFragment"
+            app:destination="@id/taskDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favouritesFragment"
         android:name="com.example.domore.ui.fragments.FavouritesFragment"
@@ -81,7 +85,11 @@
         android:id="@+id/labelDetailsFragment"
         android:name="com.example.domore.ui.fragments.LabelDetailsFragment"
         android:label="fragment_label_details"
-        tools:layout="@layout/fragment_label_details" />
+        tools:layout="@layout/fragment_label_details" >
+        <action
+            android:id="@+id/action_labelDetailsFragment_to_taskDetailsFragment"
+            app:destination="@id/taskDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/taskDetailsFragment"
         android:name="com.example.domore.ui.fragments.TaskDetailsFragment"

@@ -1,19 +1,28 @@
 package com.example.domore.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.domore.R
+import com.example.domore.adapter.TaskListAdapter
+import com.example.domore.data.Task
 import com.example.domore.databinding.FragmentLabelDetailsBinding
 
 
 class LabelDetailsFragment : SharedFragment() {
 
     private lateinit var binding: FragmentLabelDetailsBinding
+
+    private lateinit var taskAdapter: TaskListAdapter
+
+    private var labelList = mutableListOf<Task>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +45,30 @@ class LabelDetailsFragment : SharedFragment() {
             getString(R.string.task_type_header, activityCast().currentLabel.labelName)
 
         binding.fab.setOnClickListener {
-            activityCast().binding.bottomSheet.visibility = View.VISIBLE
+            activityCast().setSheetToPeek()
+        }
+
+        taskAdapter = TaskListAdapter {
+            val action = LabelDetailsFragmentDirections.actionLabelDetailsFragmentToTaskDetailsFragment(it.id)
+            this.findNavController().navigate(action)
+        }
+
+        binding.recyclerView.apply {
+            adapter = taskAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+
+        viewModel.allTasks.observe(this.viewLifecycleOwner) {tasks ->
+            tasks.let {
+                taskAdapter.submitList(it.filter { task ->
+                    task.label == activityCast().currentLabel.labelName })
+            }
+
+            if(viewModel.allTasks.value?.isNotEmpty() == true){
+                binding.noTaskLabel.visibility = View.INVISIBLE
+                binding.noTaskBg.visibility = View.INVISIBLE
+            }
+
         }
 
     }

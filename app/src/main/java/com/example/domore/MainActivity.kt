@@ -70,8 +70,7 @@ class MainActivity : AppCompatActivity() {
             TODO("Make this work")
         }
 
-        setSheetToPeek()
-
+        hideSheet()
 
         setUpDueDate()
         setUpReminder()
@@ -154,7 +153,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setSheetToPeek(){
+    fun setSheetToPeek(){
         BottomSheetBehavior.from(binding.bottomSheet).apply {
             peekHeight = 500
             this.state = BottomSheetBehavior.STATE_COLLAPSED
@@ -184,9 +183,8 @@ class MainActivity : AppCompatActivity() {
 
     //Hide the bottom sheet or drawer when back is pressed
     override fun onBackPressed() {
-        if (binding.bottomSheet.isVisible || this.drawerLayout.isDrawerOpen(GravityCompat.START) ) {
-            setSheetToPeek()
-            binding.bottomSheet.visibility = View.INVISIBLE
+        if (binding.bottomSheet.isClickable || this.drawerLayout.isDrawerOpen(GravityCompat.START) ) {
+            hideSheet()
             this.drawerLayout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()

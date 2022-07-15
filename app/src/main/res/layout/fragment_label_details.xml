@@ -68,14 +68,14 @@
         android:src="@drawable/ic_view_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="37dp"
-        app:layout_constraintTop_toTopOf="@+id/favourite_task_label"
-        app:layout_constraintBottom_toBottomOf="@+id/favourite_task_label"/>
+        app:layout_constraintTop_toTopOf="@+id/task_type_label"
+        app:layout_constraintBottom_toBottomOf="@+id/task_type_label"/>
 
     <TextView
-        android:id="@+id/no_favourite_task_label"
+        android:id="@+id/no_task_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/you_have_no_favourite_task"
+        android:text="@string/you_have_no_task_with_this_label"
         android:fontFamily="@font/notosans_medium"
         android:textColor="@color/black"
         android:alpha="0.5"
@@ -92,9 +92,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_empty_list_bg"
-        app:layout_constraintTop_toBottomOf="@+id/no_favourite_task_label"
+        app:layout_constraintTop_toBottomOf="@+id/no_task_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        tools:listitem="@layout/item_recycler_list_view"
+        tools:itemCount="5"
+        app:layout_constraintTop_toBottomOf="@+id/task_type_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

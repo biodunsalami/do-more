@@ -17,6 +17,8 @@
         <entry key="app/src/main/res/drawable/ic_label_little.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_no_task_add_bg.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/ic_notifications.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_outline_circle.xml" value="0.12" />
+        <entry key="app/src/main/res/drawable/ic_outline_circle_check.xml" value="0.12" />
         <entry key="app/src/main/res/drawable/ic_outline_local_offer.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/ic_view_quilt.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/ic_view_toggle.xml" value="0.1715" />
@@ -27,7 +29,7 @@
         <entry key="app/src/main/res/layout/dialog_first_task_congrats.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_calender.xml" value="0.3541666666666667" />
         <entry key="app/src/main/res/layout/fragment_favourites.xml" value="0.20377604166666669" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1749267578125" />
         <entry key="app/src/main/res/layout/fragment_label_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_labels.xml" value="0.22507232666015625" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.18489583333333334" />
@@ -40,7 +42,7 @@
         <entry key="app/src/main/res/layout/item_labels_recycler.xml" value="0.20431315104166667" />
         <entry key="app/src/main/res/layout/item_recycler.xml" value="0.3541666666666667" />
         <entry key="app/src/main/res/layout/item_recycler_grid_view.xml" value="0.31168365478515636" />
-        <entry key="app/src/main/res/layout/item_recycler_list_view.xml" value="0.30082644628099175" />
+        <entry key="app/src/main/res/layout/item_recycler_list_view.xml" value="0.31549158188903215" />
         <entry key="app/src/main/res/layout/item_recycler_view.xml" value="0.3541666666666667" />
         <entry key="app/src/main/res/layout/nav_header.xml" value="0.2666849772135417" />
         <entry key="app/src/main/res/menu/nav_drawer.xml" value="0.3541666666666667" />

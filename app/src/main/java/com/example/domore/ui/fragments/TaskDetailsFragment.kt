@@ -24,11 +24,6 @@ class TaskDetailsFragment : SharedFragment() {
 
     private val navigationArgs: TaskDetailsFragmentArgs by navArgs()
 
-    private val viewModel: TaskViewModel by activityViewModels {
-        TaskViewModelFactory(
-            (activity?.application as DoMoreApp).taskDatabase.taskDao()
-        )
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,7 +48,7 @@ class TaskDetailsFragment : SharedFragment() {
 
         binding.deleteTaskTextView.setOnClickListener {
             viewModel.deleteTask(task)
-            findNavController().navigateUp()
+            findNavController().popBackStack()
         }
 
     }

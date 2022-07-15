@@ -6,8 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import com.example.domore.MainActivity
 import com.example.domore.R
+import com.example.domore.app.DoMoreApp
+import com.example.domore.viewModel.TaskViewModel
+import com.example.domore.viewModel.TaskViewModelFactory
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.*
@@ -22,8 +26,16 @@ open class SharedFragment : Fragment() {
 
     var monthName = ""
 
+    val dateToday = ""
+
     fun activityCast() : MainActivity {
         return activity as MainActivity
+    }
+
+    val viewModel: TaskViewModel by activityViewModels {
+        TaskViewModelFactory(
+            (activity?.application as DoMoreApp).taskDatabase.taskDao()
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,6 +91,65 @@ open class SharedFragment : Fragment() {
             }
         }
 
+    }
+
+
+    private fun isEntryValid(): Boolean {
+        return viewModel.isEntryValid(
+            activityCast().binding.taskTitle.text.toString(),
+            activityCast().binding.taskDescriptionTextView.text.toString(),
+            activityCast().binding.priorityAutocompleteTextview.text.toString(),
+        )
+    }
+
+    fun addNewTask() {
+        if (isEntryValid()) {
+            viewModel.addNewTask(
+                activityCast().binding.taskTitle.text.toString(),
+                activityCast().binding.taskDescriptionTextView.text.toString(),
+                activityCast().binding.dueDateEditText.text.toString(),
+                activityCast().binding.taskReminderTextView.text.toString(),
+                activityCast().binding.additionalInfo.text.toString(),
+                activityCast().binding.priorityAutocompleteTextview.text.toString().toInt(),
+                activityCast().binding.labelAutocompleteTextview.text.toString(),
+
+
+            )
+            showToast("Task Added Successfully")
+            clearFields()
+            activityCast().hideSheet()
+
+        }else{
+            showToast("Enter fields")
+        }
+
+    }
+
+
+    fun updateTask(){
+        if (isEntryValid()) {
+            viewModel.updateTask(
+                1,
+//                this.navigationArgs.itemId,
+                activityCast().binding.taskTitle.text.toString(),
+                activityCast().binding.taskDescriptionTextView.text.toString(),
+                activityCast().binding.dueDateEditText.text.toString(),
+                activityCast().binding.taskReminderTextView.text.toString(),
+                activityCast().binding.additionalInfo.text.toString(),
+                activityCast().binding.priorityAutocompleteTextview.text.toString().toInt(),
+                activityCast().binding.labelAutocompleteTextview.text.toString()
+            )
+        }
+    }
+
+    fun clearFields(){
+        activityCast().binding.taskTitle.text.clear()
+        activityCast().binding.taskDescriptionTextView.text.clear()
+        activityCast().binding.dueDateEditText.setText("")
+        activityCast().binding.taskReminderTextView.setText("")
+        activityCast().binding.additionalInfo.text.clear()
+        activityCast().binding.priorityAutocompleteTextview.setText("")
+        activityCast().binding.labelAutocompleteTextview.setText("")
     }
 
 }

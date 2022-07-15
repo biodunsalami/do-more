@@ -1,6 +1,7 @@
 package com.example.domore.viewModel
 
 import androidx.lifecycle.*
+import com.example.domore.MainActivity
 import com.example.domore.data.Task
 import com.example.domore.data.TaskDao
 import kotlinx.coroutines.launch
@@ -9,11 +10,6 @@ class TaskViewModel(private val taskDao: TaskDao): ViewModel() {
 
     val allTasks: LiveData<List<Task>> = taskDao.getTaskList().asLiveData()
 
-//    val sortedTasks = mutableListOf<Task>()
-//
-//    fun sortTask(){
-//
-//    }
 
     fun retrieveTask(id: Int): LiveData<Task> {
         return taskDao.getTask(id).asLiveData()
@@ -90,13 +86,13 @@ class TaskViewModel(private val taskDao: TaskDao): ViewModel() {
 
 
     private fun getUpdatedTaskEntry(id: Int,
-                                title: String,
-                                description: String,
-                                dueDate: String,
-                                remainderTime: String,
-                                note: String,
-                                priority: Int,
-                                label: String): Task {
+                                    title: String,
+                                    description: String,
+                                    dueDate: String,
+                                    remainderTime: String,
+                                    note: String,
+                                    priority: Int,
+                                    label: String): Task {
         return Task(
             id = id,
             title = title,
