@@ -9,7 +9,9 @@
         <entry key="app/src/main/res/drawable/curved_edit_text_bg.xml" value="0.231" />
         <entry key="app/src/main/res/drawable/curved_rectangle_bg.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/custom_progress_bg.xml" value="0.1315" />
+        <entry key="app/src/main/res/drawable/done_button_background.xml" value="0.1465" />
         <entry key="app/src/main/res/drawable/drawer_bg.xml" value="0.1715" />
+        <entry key="app/src/main/res/drawable/favourite_button_background.xml" value="0.1465" />
         <entry key="app/src/main/res/drawable/hint.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/ic_block.xml" value="0.1715" />
@@ -20,6 +22,8 @@
         <entry key="app/src/main/res/drawable/ic_outline_circle.xml" value="0.12" />
         <entry key="app/src/main/res/drawable/ic_outline_circle_check.xml" value="0.12" />
         <entry key="app/src/main/res/drawable/ic_outline_local_offer.xml" value="0.1715" />
+        <entry key="app/src/main/res/drawable/ic_star_blue.xml" value="0.1465" />
+        <entry key="app/src/main/res/drawable/ic_star_outline.xml" value="0.1465" />
         <entry key="app/src/main/res/drawable/ic_view_quilt.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/ic_view_toggle.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/item_drop_down.xml" value="0.1645" />

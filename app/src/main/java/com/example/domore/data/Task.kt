@@ -14,4 +14,6 @@ data class Task(
     val note: String = "",
     val priority: Int,
     val label: String,
+    var isFavourite: Boolean = false,
+    var isDone: Boolean = false
 )

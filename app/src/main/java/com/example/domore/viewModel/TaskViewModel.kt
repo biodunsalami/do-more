@@ -43,18 +43,26 @@ class TaskViewModel(private val taskDao: TaskDao): ViewModel() {
     //Inserts the new Item into database.
     fun addNewTask(title: String, description: String, dueDate: String,
                    remainderTime: String, note: String, priority: Int,
-                   label: String) {
-        val newTask = getNewTaskEntry(title, description, dueDate, remainderTime, note, priority, label)
+                   label: String, isFavourite: Boolean, isDone: Boolean) {
+        val newTask = getNewTaskEntry(title, description, dueDate, remainderTime, note, priority, label, isFavourite, isDone)
         insertTask(newTask)
     }
 
 
     fun updateTask(id: Int, title: String, description: String, dueDate: String,
                    remainderTime: String, note: String, priority: Int,
-                   label: String){
-        val updatedTask = getUpdatedTaskEntry(id, title, description, dueDate, remainderTime, note, priority, label)
+                   label: String, isFavourite: Boolean, isDone: Boolean){
+        val updatedTask = getUpdatedTaskEntry(id, title, description, dueDate, remainderTime, note, priority, label, isFavourite, isDone)
 
         updateTask(updatedTask)
+    }
+
+    fun taskCompletion(task: Task){
+        updateTask(task)
+    }
+
+    fun taskFavourite(task: Task){
+        updateTask(task)
     }
 
 
@@ -66,13 +74,16 @@ class TaskViewModel(private val taskDao: TaskDao): ViewModel() {
     }
 
 
+
     private fun getNewTaskEntry(title: String,
                                 description: String,
                                 dueDate: String,
                                 remainderTime: String,
                                 note: String,
                                 priority: Int,
-                                label: String): Task {
+                                label: String,
+                                isFavourite: Boolean,
+                                isDone: Boolean): Task {
         return Task(
             title = title,
             description = description,
@@ -80,7 +91,9 @@ class TaskViewModel(private val taskDao: TaskDao): ViewModel() {
             remainderTime = remainderTime,
             note = note,
             priority = priority,
-            label = label
+            label = label,
+            isFavourite = isFavourite,
+            isDone = isDone
         )
     }
 
@@ -92,7 +105,9 @@ class TaskViewModel(private val taskDao: TaskDao): ViewModel() {
                                     remainderTime: String,
                                     note: String,
                                     priority: Int,
-                                    label: String): Task {
+                                    label: String,
+                                    isFavourite: Boolean,
+                                    isDone: Boolean): Task {
         return Task(
             id = id,
             title = title,
@@ -101,7 +116,9 @@ class TaskViewModel(private val taskDao: TaskDao): ViewModel() {
             remainderTime = remainderTime,
             note = note,
             priority = priority,
-            label = label
+            label = label,
+            isFavourite = isFavourite,
+            isDone = isDone
         )
     }
 

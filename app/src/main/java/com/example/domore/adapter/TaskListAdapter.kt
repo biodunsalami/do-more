@@ -1,20 +1,47 @@
 package com.example.domore.adapter
 
+import android.content.Context
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domore.R
 import com.example.domore.data.Task
 import com.example.domore.databinding.ItemRecyclerListViewBinding
 
-class TaskListAdapter(private val onItemClicked: (Task) -> Unit) : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(
+class TaskListAdapter(private val taskInfoInterface: TaskInfoInterface, private val context: Context) : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(
     DiffCallback){
 
-    class TaskViewHolder(private var binding: ItemRecyclerListViewBinding):
+    inner class TaskViewHolder(private var binding: ItemRecyclerListViewBinding):
         RecyclerView.ViewHolder(binding.root){
-            fun bind(task: Task){
+            fun bind(task: Task, taskInfoInterface: TaskInfoInterface){
+                binding.doneCheckbox.isChecked = task.isDone
                 binding.taskTitle.text = task.title
+                binding.favouriteStarCheckbox.isChecked = task.isFavourite
+
+                if(binding.doneCheckbox.isChecked){
+                    binding.taskTitle.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+                    binding.cardView.alpha = 0.8F
+                    binding.favouriteStarCheckbox.isClickable = false
+                }
+
+
+                binding.doneCheckbox.setOnClickListener {
+                    taskInfoInterface.onDoneClicked(adapterPosition, binding.doneCheckbox.isChecked)
+
+
+                }
+
+                binding.favouriteStarCheckbox.setOnClickListener {
+                    taskInfoInterface.onFavouriteClicked(adapterPosition, binding.favouriteStarCheckbox.isChecked)
+                }
+
+                binding.taskTitle.setOnClickListener {
+                    taskInfoInterface.onCardClicked(adapterPosition)
+                }
             }
         }
 
@@ -23,9 +50,7 @@ class TaskListAdapter(private val onItemClicked: (Task) -> Unit) : ListAdapter<T
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         return TaskViewHolder(
             ItemRecyclerListViewBinding.inflate(
-                LayoutInflater.from(
-                    parent.context
-                )
+                LayoutInflater.from(parent.context), parent, false
             )
         )
     }
@@ -34,10 +59,9 @@ class TaskListAdapter(private val onItemClicked: (Task) -> Unit) : ListAdapter<T
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val current = getItem(position)
-        holder.itemView.setOnClickListener {
-            onItemClicked(current)
-        }
-        holder.bind(current)
+
+        holder.bind(current, taskInfoInterface)
+
     }
 
 

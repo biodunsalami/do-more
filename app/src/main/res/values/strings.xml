@@ -99,7 +99,7 @@
     <string name="month10">October</string>
     <string name="month11">November</string>
     <string name="month12">December</string>
-    <string name="task_title_info"><strike> Friday Hangout </strike> </string>
+    <string name="task_title_info"><u>%1$s</u></string>
     <string name="you_have_no_task_with_this_label">You have no task with this label</string>
 
 

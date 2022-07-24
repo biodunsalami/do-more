@@ -38,6 +38,9 @@ class MainActivity : AppCompatActivity() {
     var calender = Calendar.getInstance()
     private var dueDate = ""
 
+    var isTaskDone = false
+    var isTaskFavourite = false
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -157,6 +160,7 @@ class MainActivity : AppCompatActivity() {
         BottomSheetBehavior.from(binding.bottomSheet).apply {
             peekHeight = 500
             this.state = BottomSheetBehavior.STATE_COLLAPSED
+            binding.bottomSheet.isClickable = true
         }
     }
 
@@ -164,6 +168,7 @@ class MainActivity : AppCompatActivity() {
         BottomSheetBehavior.from(binding.bottomSheet).apply {
             isHideable = true
             this.state = BottomSheetBehavior.STATE_HIDDEN
+            binding.bottomSheet.isClickable = false
         }
     }
 

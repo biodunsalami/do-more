@@ -9,16 +9,19 @@ import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.domore.R
+import com.example.domore.adapter.TaskInfoInterface
 import com.example.domore.adapter.TaskListAdapter
 import com.example.domore.data.Task
 import com.example.domore.databinding.FragmentHomeBinding
 
 
-class HomeFragment : SharedFragment() {
+class HomeFragment : SharedFragment(), TaskInfoInterface {
 
     private lateinit var binding: FragmentHomeBinding
 
     private lateinit var taskAdapter: TaskListAdapter
+
+
 
     private var currentProgress = 0
 
@@ -41,6 +44,7 @@ class HomeFragment : SharedFragment() {
 //        binding.progressBar.max = 100 //change this to size of adapter or sm
 //        binding.progressBar.progress = currentProgress
 
+
         binding.date.text = getString(R.string.current_date, day, monthName, year)
 
         binding.addNewTask.setOnClickListener {
@@ -55,14 +59,13 @@ class HomeFragment : SharedFragment() {
            addNewTask()
        }
 
-        taskAdapter = TaskListAdapter {
-            val action = HomeFragmentDirections.actionHomeFragmentToTaskDetailsFragment(it.id)
-            this.findNavController().navigate(action)
-        }
+        taskAdapter = TaskListAdapter(this@HomeFragment, requireContext())
+        //            val action = HomeFragmentDirections.actionHomeFragmentToTaskDetailsFragment(it.id)
+        //            this.findNavController().navigate(action)
 
         binding.listRecyclerView.apply {
-          adapter = taskAdapter
-          layoutManager = LinearLayoutManager(requireContext())
+            adapter = taskAdapter
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         }
 
         viewModel.allTasks.observe(this.viewLifecycleOwner) {tasks ->
@@ -102,5 +105,51 @@ class HomeFragment : SharedFragment() {
             doneButton.setOnClickListener { updateTask() }
         }
     }
+
+    override fun onCardClicked(position: Int) {
+        val taskClicked = viewModel.allTasks.value?.get(position)
+
+        val action = taskClicked?.id?.let {
+            HomeFragmentDirections.actionHomeFragmentToTaskDetailsFragment(
+                it
+            )
+        }
+        if (action != null) {
+            this.findNavController().navigate(action)
+        }
+    }
+
+    override fun onFavouriteClicked(position: Int, isFavourite: Boolean) {
+        val taskClicked = viewModel.allTasks.value?.get(position)
+        taskClicked?.isFavourite = isFavourite
+
+        if (taskClicked != null){
+            viewModel.taskFavourite(taskClicked)
+        }
+
+//        activityCast().isTaskFavourite = isFavourite
+//        updateTask()
+
+
+
+    }
+
+    override fun onDoneClicked(position: Int, isDone: Boolean) {
+        val taskClicked = viewModel.allTasks.value?.get(position)
+        taskClicked?.isDone = isDone
+
+        if (taskClicked != null) {
+            viewModel.taskCompletion(taskClicked)
+        }
+
+
+
+//        activityCast().isTaskDone = isDone
+//        updateTask()
+
+
+    }
+
+
 
 }

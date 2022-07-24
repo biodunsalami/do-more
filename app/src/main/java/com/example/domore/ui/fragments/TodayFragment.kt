@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.domore.R
+import com.example.domore.adapter.TaskInfoInterface
 import com.example.domore.adapter.TaskListAdapter
 import com.example.domore.app.DoMoreApp
 import com.example.domore.data.Task
@@ -17,7 +18,7 @@ import com.example.domore.databinding.FragmentTodayBinding
 import com.example.domore.viewModel.TaskViewModel
 import com.example.domore.viewModel.TaskViewModelFactory
 
-class TodayFragment : SharedFragment() {
+class TodayFragment : SharedFragment(), TaskInfoInterface {
 
     private lateinit var binding: FragmentTodayBinding
 
@@ -50,10 +51,10 @@ class TodayFragment : SharedFragment() {
             activityCast().setSheetToPeek()
         }
 
-        taskAdapter = TaskListAdapter {
-            val action = TodayFragmentDirections.actionTodayFragmentToTaskDetailsFragment(it.id)
-            this.findNavController().navigate(action)
-        }
+        taskAdapter = TaskListAdapter(this@TodayFragment, requireContext())
+
+//        val action = TodayFragmentDirections.actionTodayFragmentToTaskDetailsFragment(it.id)
+//        this.findNavController().navigate(action)
 
         binding.recyclerView.apply {
             adapter = taskAdapter
@@ -67,6 +68,33 @@ class TodayFragment : SharedFragment() {
 
         }
 
+    }
+
+    override fun onCardClicked(position: Int) {
+        val taskClicked = viewModel.allTasks.value?.get(position)
+
+        val action = taskClicked?.id?.let {
+            TodayFragmentDirections.actionTodayFragmentToTaskDetailsFragment(
+                it
+            )
+        }
+        if (action != null) {
+            this.findNavController().navigate(action)
+        }
+    }
+
+    override fun onDoneClicked(position: Int, isDone: Boolean) {
+        val taskClicked = viewModel.allTasks.value?.get(position)
+
+        updateTask()
+
+        taskClicked?.isFavourite = !isDone
+    }
+
+    override fun onFavouriteClicked(position: Int, isFavourite: Boolean) {
+        val taskClicked = viewModel.allTasks.value?.get(position)
+
+        taskClicked?.isFavourite = !isFavourite
     }
 
 }

@@ -11,12 +11,13 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.domore.R
+import com.example.domore.adapter.TaskInfoInterface
 import com.example.domore.adapter.TaskListAdapter
 import com.example.domore.data.Task
 import com.example.domore.databinding.FragmentLabelDetailsBinding
 
 
-class LabelDetailsFragment : SharedFragment() {
+class LabelDetailsFragment : SharedFragment(), TaskInfoInterface {
 
     private lateinit var binding: FragmentLabelDetailsBinding
 
@@ -48,10 +49,9 @@ class LabelDetailsFragment : SharedFragment() {
             activityCast().setSheetToPeek()
         }
 
-        taskAdapter = TaskListAdapter {
-            val action = LabelDetailsFragmentDirections.actionLabelDetailsFragmentToTaskDetailsFragment(it.id)
-            this.findNavController().navigate(action)
-        }
+        taskAdapter = TaskListAdapter(this@LabelDetailsFragment, requireContext())
+//        val action = LabelDetailsFragmentDirections.actionLabelDetailsFragmentToTaskDetailsFragment(it.id)
+//        this.findNavController().navigate(action)
 
         binding.recyclerView.apply {
             adapter = taskAdapter
@@ -78,6 +78,31 @@ class LabelDetailsFragment : SharedFragment() {
 
         activityCast().supportActionBar?.show()
 
+    }
+
+    override fun onCardClicked(position: Int) {
+        val taskClicked = viewModel.allTasks.value?.get(position)
+
+        val action = taskClicked?.id?.let {
+            LabelDetailsFragmentDirections.actionLabelDetailsFragmentToTaskDetailsFragment(
+                it
+            )
+        }
+        if (action != null) {
+            this.findNavController().navigate(action)
+        }
+    }
+
+    override fun onDoneClicked(position: Int, isDone: Boolean) {
+        val taskClicked = viewModel.allTasks.value?.get(position)
+
+        taskClicked?.isDone = !isDone
+    }
+
+    override fun onFavouriteClicked(position: Int, isFavourite: Boolean) {
+        val taskClicked = viewModel.allTasks.value?.get(position)
+
+        taskClicked?.isFavourite = !isFavourite
     }
 
 

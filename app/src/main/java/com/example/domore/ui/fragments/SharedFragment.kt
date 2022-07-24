@@ -1,6 +1,7 @@
 package com.example.domore.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -112,6 +113,9 @@ open class SharedFragment : Fragment() {
                 activityCast().binding.additionalInfo.text.toString(),
                 activityCast().binding.priorityAutocompleteTextview.text.toString().toInt(),
                 activityCast().binding.labelAutocompleteTextview.text.toString(),
+                isFavourite = false,
+                isDone = false
+
 
 
             )
@@ -127,6 +131,8 @@ open class SharedFragment : Fragment() {
 
 
     fun updateTask(){
+        Log.e("isTaskDone", "${activityCast().isTaskDone}")
+//        showToast("updateTask is called")
         if (isEntryValid()) {
             viewModel.updateTask(
                 1,
@@ -137,9 +143,14 @@ open class SharedFragment : Fragment() {
                 activityCast().binding.taskReminderTextView.text.toString(),
                 activityCast().binding.additionalInfo.text.toString(),
                 activityCast().binding.priorityAutocompleteTextview.text.toString().toInt(),
-                activityCast().binding.labelAutocompleteTextview.text.toString()
+                activityCast().binding.labelAutocompleteTextview.text.toString(),
+                activityCast().isTaskFavourite,
+                activityCast().isTaskDone
+
             )
         }
+//        showToast("${activityCast().isTaskDone}")
+        Log.e("isTaskDone", "${activityCast().isTaskDone}")
     }
 
     fun clearFields(){
