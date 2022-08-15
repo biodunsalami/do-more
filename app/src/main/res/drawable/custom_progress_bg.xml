@@ -5,17 +5,20 @@
 
         <shape android:shape="rectangle">
             <corners android:radius="6dp"/>
-            <solid android:color="@color/gray"/>
+            <solid android:color="@color/light_gray"/>
         </shape>
 
     </item>
 
     <item android:id="@android:id/progress">
+        <scale android:scaleWidth="100%">
 
-        <shape android:shape="rectangle">
-            <corners android:radius="6dp"/>
-            <solid android:color="@color/primary_color"/>
-        </shape>
+            <shape android:shape="rectangle">
+                <corners android:radius="6dp"/>
+                <solid android:color="@color/primary_color"/>
+            </shape>
+
+        </scale>
 
     </item>
 

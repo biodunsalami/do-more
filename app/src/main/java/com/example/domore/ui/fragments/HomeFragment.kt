@@ -40,9 +40,6 @@ class HomeFragment : SharedFragment(), TaskInfoInterface {
         super.onViewCreated(view, savedInstanceState)
 
 
-//        currentProgress += 10
-//        binding.progressBar.max = 100 //change this to size of adapter or sm
-//        binding.progressBar.progress = currentProgress
 
 
         binding.date.text = getString(R.string.current_date, day, monthName, year)
@@ -72,6 +69,15 @@ class HomeFragment : SharedFragment(), TaskInfoInterface {
             tasks.let {
                 taskAdapter.submitList(it)
                 Log.e("The List", "$it")
+
+                binding.taskNumInfoTextView.text = getString(R.string.task_number_info,
+                    it.filter { task -> !task.isDone }.size)
+
+
+                //progressBar update
+                binding.progressBar.max = it.size
+                binding.progressBar.progress = it.filter { task -> task.isDone }.size
+
             }
 
             if(viewModel.allTasks.value?.isNotEmpty() == true){
@@ -82,13 +88,10 @@ class HomeFragment : SharedFragment(), TaskInfoInterface {
                 binding.fab.visibility = View.VISIBLE
                 binding.addTaskLabel.visibility = View.VISIBLE
             }
-
         }
 
-        //"You have xx Task to do
-        binding.taskNumInfoTextView.text = getString(R.string.task_number_info,
-            viewModel.allTasks.value?.size)
 
+        currentProgress += 10
     }
 
 
@@ -126,12 +129,6 @@ class HomeFragment : SharedFragment(), TaskInfoInterface {
         if (taskClicked != null){
             viewModel.taskFavourite(taskClicked)
         }
-
-//        activityCast().isTaskFavourite = isFavourite
-//        updateTask()
-
-
-
     }
 
     override fun onDoneClicked(position: Int, isDone: Boolean) {
@@ -141,13 +138,6 @@ class HomeFragment : SharedFragment(), TaskInfoInterface {
         if (taskClicked != null) {
             viewModel.taskCompletion(taskClicked)
         }
-
-
-
-//        activityCast().isTaskDone = isDone
-//        updateTask()
-
-
     }
 
 

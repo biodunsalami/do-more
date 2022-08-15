@@ -50,8 +50,7 @@ class LabelDetailsFragment : SharedFragment(), TaskInfoInterface {
         }
 
         taskAdapter = TaskListAdapter(this@LabelDetailsFragment, requireContext())
-//        val action = LabelDetailsFragmentDirections.actionLabelDetailsFragmentToTaskDetailsFragment(it.id)
-//        this.findNavController().navigate(action)
+
 
         binding.recyclerView.apply {
             adapter = taskAdapter

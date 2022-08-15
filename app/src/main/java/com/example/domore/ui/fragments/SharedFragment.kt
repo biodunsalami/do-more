@@ -1,5 +1,6 @@
 package com.example.domore.ui.fragments
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
 import com.example.domore.MainActivity
 import com.example.domore.R
@@ -20,14 +22,19 @@ import java.util.*
 
 open class SharedFragment : Fragment() {
 
-    val date = Calendar.getInstance()
-    val day = date.get(Calendar.DAY_OF_MONTH)
-    val month = date.get(Calendar.MONTH)
-    val year = date.get(Calendar.YEAR)
+    val date = LocalDate.now()
+    val day = date.dayOfMonth
+    val month = date.monthValue
+    val year = date.year
+
+
 
     var monthName = ""
 
-    val dateToday = ""
+    private val dayFormatted = if (day.toString().length < 2) "0$day" else day
+    private val monthFormatted = if (date.monthValue.toString().length < 2) "0${date.monthValue}" else date.monthValue
+
+    val dateToday = "$dayFormatted-${monthFormatted}-$year"
 
     fun activityCast() : MainActivity {
         return activity as MainActivity

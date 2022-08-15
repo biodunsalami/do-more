@@ -1,6 +1,7 @@
 package com.example.domore.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -51,6 +52,14 @@ class TaskDetailsFragment : SharedFragment() {
             findNavController().popBackStack()
         }
 
+        binding.completeButton.setOnClickListener {
+            Log.e("Taskeeyyyyyyy", "$task")
+            task.isDone = !task.isDone
+            viewModel.taskCompletion(task)
+
+            findNavController().navigateUp()
+        }
+
     }
 
     private fun bind(task: Task){
@@ -60,6 +69,20 @@ class TaskDetailsFragment : SharedFragment() {
             taskDescriptionTextView.text = task.description
             notesTextView.text = task.note
             priorityNumberTextView.text = task.priority.toString()
+
+            if(task.isFavourite){
+                favouriteStarImageView.setImageResource(R.drawable.ic_star_blue)
+            }else{
+                favouriteStarImageView.setImageResource(R.drawable.ic_star_outline)
+            }
+
+            if (task.isDone){
+                statusCompleteTextView.visibility = View.VISIBLE
+                statusIncompleteTextView.visibility = View.INVISIBLE
+            }else{
+                statusCompleteTextView.visibility = View.INVISIBLE
+                statusIncompleteTextView.visibility = View.VISIBLE
+            }
         }
 
     }

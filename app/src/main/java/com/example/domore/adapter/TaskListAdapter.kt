@@ -12,8 +12,9 @@ import com.example.domore.R
 import com.example.domore.data.Task
 import com.example.domore.databinding.ItemRecyclerListViewBinding
 
-class TaskListAdapter(private val taskInfoInterface: TaskInfoInterface, private val context: Context) : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(
-    DiffCallback){
+class TaskListAdapter(private val taskInfoInterface: TaskInfoInterface,
+                      private val context: Context) :
+    ListAdapter<Task, TaskListAdapter.TaskViewHolder>(DiffCallback){
 
     inner class TaskViewHolder(private var binding: ItemRecyclerListViewBinding):
         RecyclerView.ViewHolder(binding.root){
@@ -22,25 +23,29 @@ class TaskListAdapter(private val taskInfoInterface: TaskInfoInterface, private 
                 binding.taskTitle.text = task.title
                 binding.favouriteStarCheckbox.isChecked = task.isFavourite
 
-                if(binding.doneCheckbox.isChecked){
-                    binding.taskTitle.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-                    binding.cardView.alpha = 0.8F
-                    binding.favouriteStarCheckbox.isClickable = false
-                }
 
 
                 binding.doneCheckbox.setOnClickListener {
                     taskInfoInterface.onDoneClicked(adapterPosition, binding.doneCheckbox.isChecked)
-
-
                 }
 
                 binding.favouriteStarCheckbox.setOnClickListener {
                     taskInfoInterface.onFavouriteClicked(adapterPosition, binding.favouriteStarCheckbox.isChecked)
                 }
 
-                binding.taskTitle.setOnClickListener {
+                binding.cardView.setOnClickListener {
                     taskInfoInterface.onCardClicked(adapterPosition)
+                }
+
+                if(binding.doneCheckbox.isChecked){
+                    binding.taskTitle.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+                    binding.cardView.alpha = 0.5F
+                    binding.favouriteStarCheckbox.isClickable = false
+                }else{
+                    binding.taskTitle.paintFlags = Paint.CURSOR_AT
+                    binding.cardView.alpha = 1F
+                    binding.favouriteStarCheckbox.isClickable = true
+
                 }
             }
         }

@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity() {
                     calender.set(Calendar.DAY_OF_MONTH, i3)
 
                     dueDate =
-                        SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(calender.time)
+                        SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).format(calender.time)
                     binding.dueDateEditText.setText(dueDate)
                 },
                 calender.get(Calendar.YEAR),
